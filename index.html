@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Channel</title>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-content">
+      <button class="icon-btn">
+        <div class="hamburguer">
+          <i class="fi fi-rr-menu-burger"></i>
+        </div>
+        <div class="angle-left">
+          <i class="fi fi-rr-angle-left"></i>
+        </div>
+      </button>
+      <div class="youtube-logo">
+        <div class="youtube-logo icon">
+          <i class="fi fi-brands-youtube"></i>
+        </div>
+        <span class="topbar-title yt">YouTube</span>
+      </div>
+      <span class="topbar-title cn">Channel name</span>
+    </div>
+    <div class="topbar-search">
+      <div class="search-input-wrap">
+        <input type="search" class="search-input" placeholder="Search" id="searchInput"/>
+        <button class="search-clear" id="searchClear">
+          <i class="fi fi-rr-cross-small"></i>
+        </button>
+        <button class="search-submit">
+          <i class="fi fi-rr-search"></i>
+        </button>
+      </div>
+      <button class="search-mic">
+        <i class="fi fi-rr-microphone"></i>
+      </button>
+    </div>
+    <div class="topbar-icons-desktop">
+      <div class="topbar-content">
+        <button class="icon-btn">
+          <i class="fi fi-ss-camera-movie"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fi fi-ss-grip-dots-vertical"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fi fi-ss-bell"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fi fi-rr-menu-dots-vertical"></i>
+        </button>
+      </div>
+    </div>
+    <div class="topbar-icons-mobile">
+      <div class="topbar-content">
+        <button class="icon-btn">
+          <i class="fi fi-rr-screen"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fi fi-rr-search"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fi fi-rr-menu-dots-vertical"></i>
+        </button>
+      </div>
+    </div>
+
+  </header>
+  <aside class="sidebar" id="sidebar">
+    <nav>
+      <a class="sidebar-link active" aria-current="page">
+        <i class="fi fi-rr-house-chimney"></i>
+        <span>Home</span>
+      </a>
+      <a class="sidebar-link">
+        <i class="fi fi-rr-forward"></i>
+        <span>Shorts</span>
+      </a>
+      <a class="sidebar-link">
+        <i class="fi fi-rr-subscription-user"></i>
+        <span>Subscriptions</span>
+      </a>
+      <a class="sidebar-link">
+        <i class="fi fi-rr-book-copy"></i>
+        <span>Library</span>
+      </a>
+    </nav>
+  </aside>
+  <main class="page" id="main">
+    <section class="channel-header">
+      <div class="channel-banner" role="img"></div>
+      <div class="channel-profile">
+        <div class="channel-right">
+          <img
+            class="channel-avatar"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIkBzaimF22Y-M7QSJtxx9H6EMDtZuNZ_HWA&s"
+            alt="Channel profile picture"
+          />
+          <div class="channel-meta">
+            <div class="channel-name">
+              Juninho games PVP
+              <span class="verified">
+                <i class="fi fi-ss-check-circle"></i>
+              </span>
+              <div class="channel-subs">5.5M subscribers</div>
+            </div>
+            <div class="channel-info">
+              <p class="channel-description">
+                Eleifend adipiscing quisque pellentesque lacus pellentesque aliquet
+                lacus. Varius tincidunt sem elementum feuglat et et. Dictum ut in
+                libero diam gravida ultricies mattis tellus et.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="channel-left">
+          <div class="channel-info">
+            <button class="info-arrow" id="infoArrow">
+              <i class="fi fi-rr-angle-small-right"></i>
+            </button>
+          </div>
+          <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
+        </div>
+      </div>
+      <nav class="channel-tabs" id="channelTabs">
+        <button class="tab active" data-tab="home">HOME</button>
+        <button class="tab" data-tab="videos">VIDEOS</button>
+        <button class="tab" data-tab="shorts">SHORTS</button>
+        <button class="tab" data-tab="live">LIVE</button>
+        <button class="tab" data-tab="playlists">PLAYLISTS</button>
+      </nav>
+    </section>
+    <div class="content" id="pageContent"></div>
+  </main>
+  <nav class="bottom-nav">
+    <button class="bottom-link active" aria-current="page">
+      <i class="fi fi-rr-house-chimney"></i>
+      <span>Home</span>
+    </button>
+    <button class="bottom-link">
+      <i class="fi fi-rr-forward"></i>
+      <span>Shorts</span>
+    </button>
+    <button class="bottom-link bottom-link--create">
+      <i class="fi fi-rr-add"></i>
+    </button>
+    <button class="bottom-link">
+      <i class="fi fi-rr-subscription-user"></i>
+      <span>Subs</span>
+    </button>
+    <button class="bottom-link">
+      <i class="fi fi-rr-book-copy"></i>
+      <span>Library</span>
+    </button>
+  </nav>
+  <script src="script.js"></script>
+</body>
+</html>
