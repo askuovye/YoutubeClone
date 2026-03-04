@@ -55,9 +55,11 @@
         <button class="icon-btn">
           <i class="fi fi-ss-bell"></i>
         </button>
-        <button class="icon-btn">
-          <i class="fi fi-rr-menu-dots-vertical"></i>
-        </button>
+        <img
+            class="channel-icon-sm"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIkBzaimF22Y-M7QSJtxx9H6EMDtZuNZ_HWA&s"
+            alt="Channel profile picture"
+          />
       </div>
     </div>
     <div class="topbar-icons-mobile">
@@ -68,15 +70,15 @@
         <button class="icon-btn">
           <i class="fi fi-rr-search"></i>
         </button>
-        <button class="icon-btn">
+        <button class="icon-btn" id="threedots">
           <i class="fi fi-rr-menu-dots-vertical"></i>
         </button>
       </div>
     </div>
 
   </header>
-  <aside class="sidebar" id="sidebar">
-    <nav>
+  <aside >
+    <nav class="sidebar" id="sidebar">
       <a class="sidebar-link active" aria-current="page">
         <i class="fi fi-rr-house-chimney"></i>
         <span>Home</span>
@@ -162,6 +164,40 @@
       <span>Library</span>
     </button>
   </nav>
+    <!-- ── THREE DOTS BOTTOM MODAL (mobile only) ── -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+  <div class="bottom-modal" id="bottomModal" aria-label="More options" role="dialog">
+
+    <!-- Drag handle (decorative, common on mobile sheets) -->
+    <div class="bottom-modal__handle"></div>
+
+    <!-- Modal menu items -->
+    <ul class="bottom-modal__list">
+
+      <li class="bottom-modal__item">
+        <i class="fi fi-rr-flag"></i>
+        <span>Report</span>
+      </li>
+
+      <li class="bottom-modal__item">
+        <i class="fi fi-rr-share"></i>
+        <span>Share channel</span>
+      </li>
+
+      <li class="bottom-modal__item">
+        <i class="fi fi-rr-bell"></i>
+        <span>Notifications</span>
+      </li>
+
+      <li class="bottom-modal__item">
+        <i class="fi fi-rr-ban"></i>
+        <span>Block channel</span>
+      </li>
+
+    </ul>
+
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

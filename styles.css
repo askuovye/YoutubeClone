@@ -669,6 +669,7 @@ article.video-card:hover {
   /* your existing duration styles stay the same */
 }
 
+
 .video-card { cursor: pointer; }
 .video-thumb {
   width: 100%; aspect-ratio: 16/9;
@@ -690,6 +691,7 @@ article.video-card:hover {
   padding: 1px 4px; border-radius: 4px;
 }
 .video-info { display: flex; gap: 10px; padding-top: 10px; }
+
 .channel-icon-sm {
   width: 32px; height: 32px; border-radius: 50%; background: var(--accent);
   flex-shrink: 0; display: flex; align-items: center; justify-content: center;
@@ -701,6 +703,78 @@ article.video-card:hover {
 .video-channel svg { width: 12px; height: 12px; }
 .video-stats { font-size: 12px; color: var(--text-muted); }
 
+.modal-overlay {
+  display: none;               /* hidden by default */
+  position: fixed;
+  inset: 0;                    /* cover the whole screen */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.is-open {
+  display: block;
+  opacity: 1;
+}
+
+/* ── BOTTOM MODAL SHEET ── */
+.bottom-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border-radius: 16px 16px 0 0;   /* rounded top corners only */
+  z-index: 400;
+  padding: 12px 0 32px;           /* extra bottom padding for home bar */
+
+  /* Start off-screen below, slide up when opened */
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.bottom-modal.is-open {
+  transform: translateY(0);       /* slide into view */
+}
+
+/* Drag handle bar at the top of the sheet */
+.bottom-modal__handle {
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+/* The list of options */
+.bottom-modal__list {
+  list-style: none;
+}
+
+/* Each row in the list */
+.bottom-modal__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.bottom-modal__item:hover {
+  background-color: var(--color-surface-2);
+}
+
+.bottom-modal__item i {
+  font-size: 20px;
+  width: 24px;               /* fixed width keeps all labels aligned */
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+
 /* ─────────────────────────────────────────────────────
    9. RESPONSIVE BREAKPOINTS
    Mobile-first: rules above are for small screens.
@@ -711,6 +785,10 @@ article.video-card:hover {
    Hide sidebar, show bottom nav, no left margin.      */
 @media (max-width: 767px) {
   .video-grid { grid-template-columns: repeat(1, 1fr); gap: 16px; }
+
+  .featured-video{
+    display: none;
+  }
 
   .sidebar {
     display: none;          /* completely hidden on mobile */
@@ -748,6 +826,11 @@ article.video-card:hover {
 @media (min-width: 768px) {
   .video-grid { grid-template-columns: repeat(4, 1fr); }
   .featured-thumb { width: 320px; height: 180px; }
+
+  .bottom-modal,
+  .modal-overlay {
+    display: none !important; 
+  }
 
   .bottom-nav {
     display: none;          /* sidebar replaces bottom nav */

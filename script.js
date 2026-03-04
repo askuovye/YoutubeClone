@@ -143,8 +143,97 @@ document.getElementById('channelTabs').addEventListener('click', (e) => {
 });
 
 // ─── SUBSCRIBE ───
+
+// Key used to save/load from localStorage
+const STORAGE_KEY = 'channel_subscribed';
+
+// Get the button from the DOM
 const subscribeBtn = document.getElementById('subscribeBtn');
-subscribeBtn.addEventListener('click', () => {
-  const subscribed = subscribeBtn.classList.toggle('subscribed');
-  subscribeBtn.textContent = subscribed ? 'Subscribed' : 'Subscribe';
+
+// ── Helper: update the button's look based on state ──
+function updateSubscribeButton(isSubscribed) {
+  if (isSubscribed) {
+    subscribeBtn.textContent = 'Subscribed';
+    subscribeBtn.classList.add('is-subscribed');
+  } else {
+    subscribeBtn.textContent = 'Subscribe';
+    subscribeBtn.classList.remove('is-subscribed');
+  }
+}
+
+// ── Called every time the button is clicked ──
+function onSubscribeBtnClicked() {
+
+  // Read current state from localStorage (returns null if never set)
+  const current = localStorage.getItem(STORAGE_KEY);
+
+  // Flip the state: if it was 'true', make it false, and vice versa
+  const newState = current !== 'true';
+
+  // Save the new state to localStorage as a string ('true' or 'false')
+  localStorage.setItem(STORAGE_KEY, newState);
+
+  // Update the button to reflect the new state
+  updateSubscribeButton(newState);
+}
+
+// ── On page load: restore saved state so it persists after refresh ──
+function initSubscribeButton() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  // localStorage.getItem returns a string, so compare against 'true'
+  const isSubscribed = saved === 'true';
+
+  updateSubscribeButton(isSubscribed);
+}
+
+// Wire up the click listener
+subscribeBtn.addEventListener('click', onSubscribeBtnClicked);
+
+// Run on page load to restore the saved state
+initSubscribeButton();
+
+
+// ─── THREE DOTS BOTTOM MODAL ───
+
+const threeDots   = document.getElementById('threedots');
+const bottomModal = document.getElementById('bottomModal');
+const overlay     = document.getElementById('modalOverlay');
+
+// ── Helper: open the modal ──
+function openModal() {
+  bottomModal.classList.add('is-open');
+  overlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';   // stop page scrolling behind
+}
+
+// ── Helper: close the modal ──
+function closeModal() {
+  bottomModal.classList.remove('is-open');
+  overlay.classList.remove('is-open');
+  document.body.style.overflow = '';         // restore scrolling
+}
+
+// Three dots button opens the modal
+threeDots.addEventListener('click', openModal);
+
+// Clicking the dark overlay closes it
+overlay.addEventListener('click', closeModal);
+
+// Pressing Escape also closes it
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Clicking any item in the list closes the modal
+// (uses event delegation — one listener covers all items)
+bottomModal.addEventListener('click', function (e) {
+  const item = e.target.closest('.bottom-modal__item');
+  if (!item) return;
+
+  const label = item.querySelector('span').textContent;
+  console.log('Selected:', label);
+  // Replace console.log with your actual action per item
+
+  closeModal();
 });
