@@ -15,7 +15,7 @@
   <header class="topbar">
     <div class="topbar-content">
       <button class="icon-btn">
-        <div class="hamburguer">
+        <div class="hamburguer" id="sidebarClose">
           <i class="fi fi-rr-menu-burger"></i>
         </div>
         <div class="angle-left">
@@ -75,73 +75,165 @@
         </button>
       </div>
     </div>
-
   </header>
-  <aside >
-    <nav class="sidebar" id="sidebar">
-      <a class="sidebar-link active" aria-current="page">
-        <i class="fi fi-rr-house-chimney"></i>
-        <span>Home</span>
-      </a>
-      <a class="sidebar-link">
-        <i class="fi fi-rr-forward"></i>
-        <span>Shorts</span>
-      </a>
-      <a class="sidebar-link">
-        <i class="fi fi-rr-subscription-user"></i>
-        <span>Subscriptions</span>
-      </a>
-      <a class="sidebar-link">
-        <i class="fi fi-rr-book-copy"></i>
-        <span>Library</span>
-      </a>
-    </nav>
-  </aside>
+    <aside class="sidebar" id="sidebar">
+
+      <!-- ── TOP: logo area (only visible when expanded) ── -->
+      <div class="sidebar-header">
+        <button class="icon-btn" id="sidebarClose" aria-label="Close menu">
+          <i class="fi fi-rr-menu-burger"></i>
+        </button>
+        <div class="youtube-logo">
+          <i class="fi fi-brands-youtube"></i>
+          <span>YouTube</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <!-- ── Section 1: main nav ── -->
+        <div class="sidebar-section">
+          <a class="sidebar-link active" href="#">
+            <i class="fi fi-rr-home"></i>
+            <span>Home</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-play-alt"></i>
+            <span>Shorts</span>
+          </a>
+        </div>
+
+        <hr class="sidebar-divider" />
+
+        <!-- ── Section 2: Subscriptions ── -->
+        <div class="sidebar-section">
+
+          <button class="sidebar-section-title" id="subsToggle">
+            <span>Subscriptions</span>
+            <i class="fi fi-rr-angle-right sidebar-section-arrow"></i>
+          </button>
+
+          <a class="sidebar-link sidebar-channel" href="#">
+            <img src="https://static.wikia.nocookie.net/dream_team/images/7/79/Mrbeastlogo.jpg/" alt="" class="sidebar-channel-avatar" />
+            <span>MrBeast</span>
+            <i class="fi fi-rr-signal-alt-2 sidebar-live-icon"></i>
+          </a>
+          <a class="sidebar-link sidebar-channel" href="#">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_ll70RSOeqam8uKqfYf2BTVqBD2TOediqIs5FxwXek0lpc=s900-c-k-c0x00ffffff-no-rj" alt="" class="sidebar-channel-avatar" />
+            <span>Aruan Felix</span>
+            <i class="fi fi-rr-signal-alt-2 sidebar-live-icon"></i>
+          </a>
+          <a class="sidebar-link sidebar-channel" href="#">
+            <img src="https://pt.quizur.com/_image?href=https://static.quizur.com/i/b/5a4ab1a9a7c5d6.04917701EDU.jpg&w=1024&h=1024&f=webp" alt="" class="sidebar-channel-avatar" />
+            <span>Edu Kof</span>
+            <i class="fi fi-rr-signal-alt-2 sidebar-live-icon"></i>
+          </a>
+          <a class="sidebar-link sidebar-channel" href="#">
+            <img src="https://palestrasdesucesso.com.br/wp-content/uploads/2019/10/pedro-rezende.jpg" alt="" class="sidebar-channel-avatar" />
+            <span>RezendeEvil</span>
+            <span class="sidebar-dot"></span>
+          </a>
+          <a class="sidebar-link sidebar-channel" href="#">
+            <img src="https://i.ytimg.com/vi/wINzzPm4hj0/mqdefault.jpg" alt="" class="sidebar-channel-avatar" />
+            <span>Blackoutz</span>
+            <span class="sidebar-dot"></span>
+          </a>
+
+          <!-- Show more toggle -->
+          <button class="sidebar-link sidebar-show-more" id="showMoreSubs">
+            <i class="fi fi-rr-angle-down"></i>
+            <span>Show more</span>
+          </button>
+
+        </div>
+
+        <hr class="sidebar-divider" />
+
+        <!-- ── Section 3: You ── -->
+        <div class="sidebar-section">
+
+          <button class="sidebar-section-title" id="youToggle">
+            <span>You</span>
+            <i class="fi fi-rr-angle-right sidebar-section-arrow"></i>
+          </button>
+
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-time-past"></i>
+            <span>History</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-music-note-slash"></i>
+            <span>Playlists</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-clock"></i>
+            <span>Watch later</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-social-network"></i>
+            <span>Liked videos</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-play-alt"></i>
+            <span>Your videos</span>
+          </a>
+          <a class="sidebar-link" href="#">
+            <i class="fi fi-rr-download"></i>
+            <span>Downloads</span>
+          </a>
+
+        </div>
+
+      </nav>
+
+    </aside>
   <main class="page" id="main">
     <section class="channel-header">
       <div class="channel-banner" role="img"></div>
-      <div class="channel-profile">
-        <div class="channel-right">
-          <img
-            class="channel-avatar"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIkBzaimF22Y-M7QSJtxx9H6EMDtZuNZ_HWA&s"
-            alt="Channel profile picture"
-          />
-          <div class="channel-meta">
-            <div class="channel-name">
-              Juninho games PVP
-              <span class="verified">
-                <i class="fi fi-ss-check-circle"></i>
-              </span>
-              <div class="channel-subs">5.5M subscribers</div>
+      <div class="channel-content">
+        <div class="channel-profile">
+          <div class="channel-right">
+            <img
+              class="channel-avatar"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIkBzaimF22Y-M7QSJtxx9H6EMDtZuNZ_HWA&s"
+              alt="Channel profile picture"
+            />
+            <div class="channel-meta">
+              <div class="channel-name">
+                Juninho games PVP
+                <span class="verified">
+                  <i class="fi fi-ss-check-circle"></i>
+                </span>
+                <div class="channel-subs">5.5M subscribers</div>
+              </div>
+              <div class="channel-info">
+                <p class="channel-description">
+                  Eleifend adipiscing quisque pellentesque lacus pellentesque aliquet
+                  lacus. Varius tincidunt sem elementum feuglat et et. Dictum ut in
+                  libero diam gravida ultricies mattis tellus et.
+                </p>
+              </div>
             </div>
+          </div>
+          <div class="channel-left">
             <div class="channel-info">
-              <p class="channel-description">
-                Eleifend adipiscing quisque pellentesque lacus pellentesque aliquet
-                lacus. Varius tincidunt sem elementum feuglat et et. Dictum ut in
-                libero diam gravida ultricies mattis tellus et.
-              </p>
+              <button class="info-arrow" id="infoArrow">
+                <i class="fi fi-rr-angle-small-right"></i>
+              </button>
             </div>
+            <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
           </div>
         </div>
-        <div class="channel-left">
-          <div class="channel-info">
-            <button class="info-arrow" id="infoArrow">
-              <i class="fi fi-rr-angle-small-right"></i>
-            </button>
-          </div>
-          <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
-        </div>
-      </div>
-      <nav class="channel-tabs" id="channelTabs">
-        <button class="tab active" data-tab="home">HOME</button>
-        <button class="tab" data-tab="videos">VIDEOS</button>
-        <button class="tab" data-tab="shorts">SHORTS</button>
-        <button class="tab" data-tab="live">LIVE</button>
-        <button class="tab" data-tab="playlists">PLAYLISTS</button>
-      </nav>
-    </section>
-    <div class="content" id="pageContent"></div>
+        <nav class="channel-tabs" id="channelTabs">
+          <button class="tab active" data-tab="home">HOME</button>
+          <button class="tab" data-tab="videos">VIDEOS</button>
+          <button class="tab" data-tab="shorts">SHORTS</button>
+          <button class="tab" data-tab="live">LIVE</button>
+          <button class="tab" data-tab="playlists">PLAYLISTS</button>
+        </nav>
+      </section>
+      <div class="content" id="pageContent"></div>
+    </div>
   </main>
   <nav class="bottom-nav">
     <button class="bottom-link active" aria-current="page">

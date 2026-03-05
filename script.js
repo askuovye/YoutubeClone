@@ -112,9 +112,7 @@ function renderVideos() {
 function renderPlaceholder(title) {
   return `
     <div style="padding:40px;text-align:center;color:var(--text-muted)">
-      <svg style="width:64px;height:64px;margin-bottom:12px;opacity:.3" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v8z"/>
-      </svg>
+      <i style="font-size: 64px; margin-bottom:12px;opacity:.3" viewBox="0 0 24 24" fill="currentColor" class="fi fi-ss-exclamation"></i>
       <div style="font-size:20px;font-weight:600;margin-bottom:8px">${title}</div>
       <div style="font-size:14px">Nothing here yet.</div>
     </div>`;
@@ -237,3 +235,85 @@ bottomModal.addEventListener('click', function (e) {
 
   closeModal();
 });
+
+
+// ─── HAMBURGER / SIDEBAR ───
+
+const sidebar        = document.getElementById('sidebar');
+const mainPage       = document.getElementById('main');
+const hamburgerBtn   = document.getElementById('sidebarClose');
+
+// Create the overlay element in JS so you don't need it in HTML
+const sidebarOverlay = document.createElement('div');
+sidebarOverlay.classList.add('sidebar-overlay');
+document.body.appendChild(sidebarOverlay);
+
+// ── Helper: is the screen mobile sized? ──
+function isMobile() {
+  return window.innerWidth < 768;
+}
+
+// ── Open the sidebar ──
+function openSidebar() {
+  sidebar.classList.add('is-open');
+
+  // On desktop, push the main content to the right
+  if (!isMobile()) {
+    mainPage.classList.add('is-pushed');
+  }
+
+  // On mobile, show the dark overlay behind the sidebar
+  if (isMobile()) {
+    sidebarOverlay.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+// ── Close the sidebar ──
+function closeSidebar() {
+  sidebar.classList.remove('is-open');
+  mainPage.classList.remove('is-pushed');
+  sidebarOverlay.classList.remove('is-visible');
+  document.body.style.overflow = '';
+}
+
+// ── Toggle on hamburger click ──
+hamburgerBtn.addEventListener('click', function () {
+  const isOpen = sidebar.classList.contains('is-open');
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+});
+
+// ── Clicking the overlay closes sidebar on mobile ──
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// ── Escape key closes sidebar ──
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeSidebar();
+});
+
+// ── If window is resized from mobile to desktop, clean up ──
+window.addEventListener('resize', function () {
+  if (!isMobile() && sidebar.classList.contains('is-open')) {
+    sidebarOverlay.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    mainPage.classList.add('is-pushed');
+  }
+});
+
+// ─── SHOW MORE (subscriptions) ───
+const showMoreBtn = document.getElementById('showMoreSubs');
+if (showMoreBtn) {
+  showMoreBtn.addEventListener('click', function () {
+    const arrow = showMoreBtn.querySelector('i');
+    arrow.classList.toggle('fi-rr-angle-down');
+    arrow.classList.toggle('fi-rr-angle-up');
+    showMoreBtn.querySelector('span').textContent =
+      showMoreBtn.querySelector('span').textContent === 'Show more'
+        ? 'Show less'
+        : 'Show more';
+  });
+}
