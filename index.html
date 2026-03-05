@@ -14,18 +14,11 @@
 <body>
   <header class="topbar">
     <div class="topbar-content">
-      <button class="icon-btn">
-        <div class="hamburguer" id="sidebarClose">
-          <i class="fi fi-rr-menu-burger"></i>
-        </div>
-        <div class="angle-left">
-          <i class="fi fi-rr-angle-left"></i>
-        </div>
+      <button class="icon-btn hamburger-toggle" id="sidebarToggle" aria-label="Toggle menu">
+        <i class="fi fi-rr-menu-burger"></i>
       </button>
       <div class="youtube-logo">
-        <div class="youtube-logo icon">
-          <i class="fi fi-brands-youtube"></i>
-        </div>
+        <i class="fi fi-brands-youtube"></i>
         <span class="topbar-title yt">YouTube</span>
       </div>
       <span class="topbar-title cn">Channel name</span>
@@ -80,7 +73,7 @@
 
       <!-- ── TOP: logo area (only visible when expanded) ── -->
       <div class="sidebar-header">
-        <button class="icon-btn" id="sidebarClose" aria-label="Close menu">
+        <button class="icon-btn hamburger-toggle" id="sidebarToggle" aria-label="Close menu">
           <i class="fi fi-rr-menu-burger"></i>
         </button>
         <div class="youtube-logo">
@@ -231,9 +224,9 @@
           <button class="tab" data-tab="live">LIVE</button>
           <button class="tab" data-tab="playlists">PLAYLISTS</button>
         </nav>
-      </section>
+      </div>
       <div class="content" id="pageContent"></div>
-    </div>
+    </section>
   </main>
   <nav class="bottom-nav">
     <button class="bottom-link active" aria-current="page">
