@@ -1,6 +1,3 @@
-// ============================================
-// CONSTANTS & CONFIG
-// ============================================
 const CONFIG = {
   MOBILE_BREAKPOINT: 768,
   SUBSCRIBE_STORAGE_KEY: 'channel_subscribed',
@@ -20,9 +17,6 @@ const THUMBNAILS = [
   'https://images.chunk.gg/products/giggle-block-studios/simple-pvp/thumbnail-89bb77e5ccea0a69-800.jpg',
 ];
 
-// ============================================
-// DOM ELEMENTS (cached)
-// ============================================
 const DOM = {
   sidebar: document.getElementById('sidebar'),
   main: document.getElementById('main'),
@@ -58,10 +52,6 @@ const videoData = Array.from({ length: 12 }, (_, i) => ({
   thumb: THUMBNAILS[Math.floor(Math.random() * THUMBNAILS.length)],
 }));
 
-
-// ============================================
-// UTILITY FUNCTIONS
-// ============================================
 function isMobile() {
   return window.innerWidth < CONFIG.MOBILE_BREAKPOINT;
 }
@@ -70,9 +60,6 @@ function randomThumbnail() {
   return THUMBNAILS[Math.floor(Math.random() * THUMBNAILS.length)];
 }
 
-// ============================================
-// MODAL/SHEET HELPERS (generic for reuse)
-// ============================================
 function openModal(modal, overlay) {
   modal.classList.add('is-open');
   overlay.classList.add('is-open');
@@ -85,9 +72,6 @@ function closeModal(modal, overlay) {
   document.body.style.overflow = '';
 }
 
-// ============================================
-// RENDERING: VIDEO CARDS & CONTENT
-// ============================================
 function renderVideoCard(v) {
   return `
     <div class="video-card" data-id="${v.id}" role="article">
@@ -177,9 +161,6 @@ const tabContent = {
   playlists: () => renderPlaceholder('No Playlists'),
 };
 
-// ============================================
-// TABS MANAGEMENT
-// ============================================
 function initTabs() {
   DOM.pageContent.innerHTML = tabContent.home();
   
@@ -197,9 +178,6 @@ function initTabs() {
   });
 }
 
-// ============================================
-// SUBSCRIBE BUTTON
-// ============================================
 function updateSubscribeButton(isSubscribed) {
   DOM.subscribeBtn.textContent = isSubscribed ? 'Subscribed' : 'Subscribe';
   DOM.subscribeBtn.classList.toggle('is-subscribed', isSubscribed);
@@ -217,9 +195,6 @@ function initSubscribeButton() {
   });
 }
 
-// ============================================
-// SIDEBAR MANAGEMENT
-// ============================================
 function openSidebar() {
   DOM.sidebar.classList.add('is-open');
   if (!isMobile()) {
@@ -237,7 +212,6 @@ function closeSidebar() {
   document.body.style.overflow = '';
 }
 
-// Create overlay for sidebar only once
 const sidebarOverlay = document.createElement('div');
 sidebarOverlay.classList.add('sidebar-overlay');
 document.body.appendChild(sidebarOverlay);
@@ -258,9 +232,6 @@ function initSidebar() {
   });
 }
 
-// ============================================
-// BOTTOM MODAL (Three Dots Menu)
-// ============================================
 function initBottomModal() {
   DOM.threeDots.addEventListener('click', () => {
     openModal(DOM.bottomModal, DOM.modalOverlay);
@@ -280,9 +251,6 @@ function initBottomModal() {
   });
 }
 
-// ============================================
-// SHOW MORE (Subscriptions)
-// ============================================
 function initShowMore() {
   if (!DOM.showMoreBtn) return;
   
@@ -298,9 +266,6 @@ function initShowMore() {
   });
 }
 
-// ============================================
-// GLOBAL ESCAPE KEY HANDLER
-// ============================================
 function initEscapeKey() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -313,9 +278,6 @@ function initEscapeKey() {
   });
 }
 
-// ============================================
-// INITIALIZATION
-// ============================================
 function init() {
   initTabs();
   initSubscribeButton();

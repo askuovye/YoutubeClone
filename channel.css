@@ -1,0 +1,123 @@
+/*
+ * Channel header (banner + profile + tabs) styles.
+ */
+
+/* Purple banner strip */
+.channel-banner {
+  width: 100%;
+  height: 120px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://img.builtbybit.com/fGUhicu8yqIDSuDwQrxGsi53LDFYOZ0pQC01mt2oCfg/resize:fill:2000/format:webp/aHR0cHM6Ly9pLnl0aW1nLmNvbS92aS8wMTBZTFlXWVVnay9tYXhyZXNkZWZhdWx0LmpwZw");    /* solid purple, matching reference */
+}
+
+/* White card that holds avatar + text */
+.channel-profile {
+  background-color: var(--color-bg);
+  padding: 0 16px 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Round avatar — overlaps the banner by pulling it up */
+.channel-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--color-bg);
+  margin: -40px auto 12px;   /* negative top margin = overlap effect */
+  object-fit: cover;
+}
+
+.channel-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.channel-subs {
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: lighter;
+}
+
+.verified {
+  font-size: 16px;
+}
+
+.channel-description {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 4px;
+  padding: 0 8px;
+}
+
+/* Small chevron arrow on the right (matches reference image) */
+.info-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;                          /* rough vertical centre */
+  color: var(--color-text-muted);
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+.info-arrow:hover {
+  background-color: var(--color-surface-2);
+}
+
+/* Big white subscribe button */
+.subscribe-btn {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 16px auto;
+  padding: 12px 0;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.subscribe-btn:hover {
+  background-color: #ddd;
+}
+
+/* When subscribed, make it dark */
+.subscribe-btn.is-subscribed {
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+/* Horizontal scrollable tab bar */
+.channel-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 8px;
+}
+.channel-tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--color-text);
+}
+
+.tab.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}

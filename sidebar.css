@@ -1,0 +1,203 @@
+/*
+ * Sidebar / drawer navigation styles.
+ */
+
+/* Base sidebar (desktop) */
+.sidebar {
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-mini);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 150;
+  transition: width 0.2s ease;
+  scrollbar-width: none;
+}
+.sidebar::-webkit-scrollbar { display: none; }
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+/* Each navigation link row */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 2px 8px;
+  font-size: 14px;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background-color 0.15s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background-color: var(--color-surface-2);
+  font-weight: 500;
+}
+
+.sidebar-link i {
+  font-size: 18px;
+  flex-shrink: 0;   /* stop icon from shrinking */
+  width: 22px;
+  text-align: center;
+}
+
+/* Labels are invisible until sidebar is open */
+.sidebar-link span {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.is-open .sidebar-link span {
+  opacity: 1;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 8px 16px;
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 149;
+}
+.sidebar-overlay.is-visible {
+  display: block;
+}
+
+/* When expanded, sidebar grows to full width */
+.sidebar.is-open {
+  width: var(--sidebar-width);
+}
+
+/* Sidebar header (logo row, only shows when open) */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--topbar-height);
+  padding: 0 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar-header .youtube-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  font-size: 18px;
+  font-weight: 700;
+}
+.sidebar-header .youtube-logo i {
+  color: red;
+  font-size: 22px;
+}
+
+/* Logo text appears when open */
+.sidebar.is-open .sidebar-header .youtube-logo {
+  opacity: 1;
+}
+
+/* Sidebar navigation section */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+.sidebar-section {
+  padding: 4px 0;
+}
+
+/* Section title rows (Subscriptions >, You >) */
+.sidebar-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* Hidden in mini mode */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.sidebar.is-open .sidebar-section-title {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-section-arrow {
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+.sidebar-section-title.is-open .sidebar-section-arrow {
+  transform: rotate(90deg);
+}
+
+/* Channel rows inside subscriptions */
+.sidebar-channel-avatar {
+  min-width: 28px;
+  min-height: 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Live broadcast icon (red) */
+.sidebar-live-icon {
+  color: red !important;
+  font-size: 14px !important;
+  width: auto !important;
+  opacity: 0;
+  transition: opacity 0.15s;
+  margin-left: auto;
+}
+.sidebar.is-open .sidebar-live-icon {
+  opacity: 1;
+}
+
+/* Blue notification dot */
+.sidebar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #3ea6ff;
+  flex-shrink: 0;
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.sidebar.is-open .sidebar-dot {
+  opacity: 1;
+}
+
+/* Show more button */
+.sidebar-show-more {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}

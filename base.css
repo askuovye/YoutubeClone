@@ -1,0 +1,49 @@
+:root {
+  --color-bg:           #0f0f0f;   /* page background */
+  --color-surface:      #1a1a1a;   /* card / panel background */
+  --color-surface-2:    #272727;   /* hover state */
+  --color-accent:       #7c3aed;   /* purple brand colour */
+  --color-text:         #f1f1f1;   /* primary text */
+  --color-text-muted:   #aaaaaa;   /* secondary / dim text */
+  --color-border:       #3f3f3f;   /* dividers */
+  --color-white:        #ffffff;
+
+  --topbar-height:      56px;
+  --sidebar-width:      240px;
+  --sidebar-mini:       72px;      /* icon-only sidebar width */
+  --bottom-nav-height:  56px;
+}
+
+/* ─────────────────────────────────────────────────────
+   2. RESET & BASE STYLES
+   Remove default browser margins, set box-sizing.
+───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

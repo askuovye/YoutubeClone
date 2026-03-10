@@ -9,7 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="layout.css" />
+  <link rel="stylesheet" href="topbar.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="channel.css" />
+  <link rel="stylesheet" href="videos.css" />
+  <link rel="stylesheet" href="mobile.css" />
 </head>
 <body>
   <header class="topbar">
@@ -69,22 +75,8 @@
       </div>
     </div>
   </header>
-    <aside class="sidebar" id="sidebar">
-
-      <!-- ── TOP: logo area (only visible when expanded) ── -->
-      <div class="sidebar-header">
-        <button class="icon-btn hamburger-toggle" id="sidebarToggle" aria-label="Close menu">
-          <i class="fi fi-rr-menu-burger"></i>
-        </button>
-        <div class="youtube-logo">
-          <i class="fi fi-brands-youtube"></i>
-          <span>YouTube</span>
-        </div>
-      </div>
-
+    <div class="sidebar" id="sidebar">
       <nav class="sidebar-nav">
-
-        <!-- ── Section 1: main nav ── -->
         <div class="sidebar-section">
           <a class="sidebar-link active" href="#">
             <i class="fi fi-rr-home"></i>
@@ -95,17 +87,12 @@
             <span>Shorts</span>
           </a>
         </div>
-
         <hr class="sidebar-divider" />
-
-        <!-- ── Section 2: Subscriptions ── -->
         <div class="sidebar-section">
-
           <button class="sidebar-section-title" id="subsToggle">
             <span>Subscriptions</span>
             <i class="fi fi-rr-angle-right sidebar-section-arrow"></i>
           </button>
-
           <a class="sidebar-link sidebar-channel" href="#">
             <img src="https://static.wikia.nocookie.net/dream_team/images/7/79/Mrbeastlogo.jpg/" alt="" class="sidebar-channel-avatar" />
             <span>MrBeast</span>
@@ -131,25 +118,18 @@
             <span>Blackoutz</span>
             <span class="sidebar-dot"></span>
           </a>
-
-          <!-- Show more toggle -->
           <button class="sidebar-link sidebar-show-more" id="showMoreSubs">
             <i class="fi fi-rr-angle-down"></i>
             <span>Show more</span>
           </button>
 
         </div>
-
         <hr class="sidebar-divider" />
-
-        <!-- ── Section 3: You ── -->
         <div class="sidebar-section">
-
           <button class="sidebar-section-title" id="youToggle">
             <span>You</span>
             <i class="fi fi-rr-angle-right sidebar-section-arrow"></i>
           </button>
-
           <a class="sidebar-link" href="#">
             <i class="fi fi-rr-time-past"></i>
             <span>History</span>
@@ -174,12 +154,9 @@
             <i class="fi fi-rr-download"></i>
             <span>Downloads</span>
           </a>
-
         </div>
-
       </nav>
-
-    </aside>
+    </div>
   <main class="page" id="main">
     <section class="channel-header">
       <div class="channel-banner" role="img"></div>
@@ -249,39 +226,27 @@
       <span>Library</span>
     </button>
   </nav>
-    <!-- ── THREE DOTS BOTTOM MODAL (mobile only) ── -->
   <div class="modal-overlay" id="modalOverlay"></div>
-
   <div class="bottom-modal" id="bottomModal" aria-label="More options" role="dialog">
-
-    <!-- Drag handle (decorative, common on mobile sheets) -->
     <div class="bottom-modal__handle"></div>
-
-    <!-- Modal menu items -->
     <ul class="bottom-modal__list">
-
       <li class="bottom-modal__item">
         <i class="fi fi-rr-flag"></i>
         <span>Report</span>
       </li>
-
       <li class="bottom-modal__item">
         <i class="fi fi-rr-share"></i>
         <span>Share channel</span>
       </li>
-
       <li class="bottom-modal__item">
         <i class="fi fi-rr-bell"></i>
         <span>Notifications</span>
       </li>
-
       <li class="bottom-modal__item">
         <i class="fi fi-rr-ban"></i>
         <span>Block channel</span>
       </li>
-
     </ul>
-
   </div>
   <script src="script.js"></script>
 </body>

@@ -1,0 +1,294 @@
+/*
+ * Mobile layout / responsive overrides.
+ */
+
+/* Bottom navigation bar (mobile) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--bottom-nav-height);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  z-index: 200;
+}
+
+.bottom-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+  padding: 4px 0;
+}
+
+.bottom-link i {
+  font-size: 20px;
+}
+
+.bottom-link.active {
+  color: var(--color-text);
+}
+
+/* Special "+" create button in the middle */
+.bottom-link--create {
+  width: 44px;
+  height: 32px;
+  background-color: var(--color-surface-2);
+  border-radius: 8px;
+  flex: 0 0 auto;
+  padding: 0;
+  margin: 0 8px;
+}
+
+.bottom-link--create i {
+  font-size: 18px;
+}
+
+.modal-overlay {
+  display: none;               /* hidden by default */
+  position: fixed;
+  inset: 0;                    /* cover the whole screen */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.is-open {
+  display: block;
+  opacity: 1;
+}
+
+/* ── BOTTOM MODAL SHEET ── */
+.bottom-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border-radius: 16px 16px 0 0;   /* rounded top corners only */
+  z-index: 400;
+  padding: 12px 0 32px;           /* extra bottom padding for home bar */
+
+  /* Start off-screen below, slide up when opened */
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.bottom-modal.is-open {
+  transform: translateY(0);       /* slide into view */
+}
+
+/* Drag handle bar at the top of the sheet */
+.bottom-modal__handle {
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+/* The list of options */
+.bottom-modal__list {
+  list-style: none;
+}
+
+/* Each row in the list */
+.bottom-modal__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.bottom-modal__item:hover {
+  background-color: var(--color-surface-2);
+}
+
+.bottom-modal__item i {
+  font-size: 20px;
+  width: 24px;               /* fixed width keeps all labels aligned */
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Responsive breakpoints */
+
+/* --- Mobile screens (default, up to 767px) ----------
+   Hide sidebar, show bottom nav, no left margin.      */
+@media (max-width: 767px) {
+  .video-grid { grid-template-columns: repeat(1, 1fr); gap: 16px; }
+
+  .sidebar {
+    width: 0;              /* fully hidden off-screen */
+    top: 0;
+  }
+  .sidebar.is-open {
+    width: var(--sidebar-width);
+  }
+  .page {
+    margin-left: 0 !important;
+  }
+  
+  .featured-video{
+    display: none;
+  }
+
+  .sidebar {
+    display: none;          /* completely hidden on mobile */
+  }
+
+  .hamburguer{
+    display: none;
+  }
+
+  .topbar-icons-desktop{
+    display: none;
+  }
+
+  .youtube-logo{
+      display: none;
+  }
+
+  .topbar-search {
+    display: none;
+  }
+
+  .page {
+    margin-left: 0;         /* no sidebar, so no left offset */
+    margin-bottom: var(--bottom-nav-height); /* don't hide under bottom nav */
+  }
+
+  .channel-banner {
+    height: 100px;
+  }
+
+}
+
+/* --- Tablet / small desktop (768px+) ----------------
+   Show icon-only sidebar, hide bottom nav.            */
+@media (min-width: 768px) {
+  .video-grid { grid-template-columns: repeat(4, 1fr); }
+  .featured-thumb { width: 320px; height: 180px; }
+
+  .page.is-pushed {
+    margin-left: var(--sidebar-width);
+  }
+
+  .bottom-modal,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  .bottom-nav {
+    display: none;          /* sidebar replaces bottom nav */
+  }
+
+  .topbar-title{
+    &.cn {
+      display: none;
+    }
+  }
+
+  .topbar-icons-mobile {
+    display: none;
+  }
+
+  .angle-left{
+    display: none;
+  }
+
+  .channel-banner {
+    height: 160px;
+  }
+
+  .channel-profile {
+    padding: 0 24px;
+  }
+
+  .subscribe-btn {
+    width: auto;
+    padding: 10px 32px;
+    display: inline-block;
+    margin: 16px auto;
+  }
+}
+
+/* --- Large desktop (1024px+) ------------------------
+   Wider channel profile layout.                       */
+@media (min-width: 1024px) {
+  .video-grid { grid-template-columns: repeat(5, 1fr); }
+
+
+  .channel-content, .content{
+    padding: 0 15em 0 15em;
+  }
+
+  .channel-info{
+    display: none;
+  }
+
+  .channel-banner {
+    height: 200px;
+  }
+
+  .channel-name {
+    font-size: 26px;
+  }
+
+  .channel-profile {
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: 12px;
+  }
+
+  .channel-right{
+    display: flex;    
+  }
+
+  .channel-meta {
+    margin: 20px 0 0 5px ;
+  }
+
+  .channel-avatar {
+    margin: 15px 0 0;
+  }
+
+  .channel-name {
+    flex-basis: 100%;
+  }
+
+  .channel-description {
+    flex-basis: 100%;
+    padding: 0;
+  }
+
+  .subscribe-btn {
+    margin: 0;
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .video-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+@media (min-width: 1536px) {
+  .video-grid { grid-template-columns: repeat(6, 1fr); }
+}

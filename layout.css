@@ -1,0 +1,15 @@
+/*
+ * Core layout scaffolding.
+ */
+
+/* Main content area is pushed right to make room for the sidebar, and pushed down by the topbar. */
+.page {
+  margin-top: var(--topbar-height);
+  margin-left: var(--sidebar-mini);
+  /* On mobile the sidebar is hidden, so no left margin */
+  transition: margin-left 0.2s;
+}
+
+body.is-open .page {
+  margin-left: var(--sidebar-width);
+}
